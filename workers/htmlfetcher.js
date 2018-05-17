@@ -12,6 +12,6 @@ var CronJob = require('cron').CronJob;
 new CronJob('0,10,20,30,40,50 * * * * *', function () {
   console.log('You will see this message every 10 seconds');
   archive.readListOfUrls(function (urls) {
-    archive.downloadUrls(urls)
-  })
+    archive.downloadUrls(urls);
+  });
 }, null, true, 'America/Los_Angeles');

@@ -52,7 +52,7 @@ exports.makeActionHandler = function (actionMap) {
 exports.getWebsiteHtml = function (url) {
   return http.get({
     host: url,
-    path: "/"
+    path: '/'
   }, (res) => {
     const { statusCode } = res;
     const contentType = res.headers['content-type'];
@@ -76,7 +76,7 @@ exports.getWebsiteHtml = function (url) {
         let encodedName = encodeURI(url);
         fs.writeFile(archive.paths.archivedSites + '/' + encodedName + '.html', rawData, (err) => {
           if (err) { throw err; }
-        })
+        });
       } catch (e) {
         console.error(e.message);
       }
@@ -84,34 +84,34 @@ exports.getWebsiteHtml = function (url) {
   }).on('error', (e) => {
     console.error(`Got error: ${e.message}`);
   });
-}
+};
 
 
-  // const options = {
-  //   hostname: url,
-  //   port: 80,
-  //   path: '/',
-  //   method: 'GET',
-  //   headers: exports.headers
-  // };
+// const options = {
+//   hostname: url,
+//   port: 80,
+//   path: '/',
+//   method: 'GET',
+//   headers: exports.headers
+// };
 
-  // return http.request(options, (res) => {
-  //   console.log(`STATUS: ${res.statusCode}`);
-  //   console.log(`HEADERS: ${JSON.stringify(res.headers)}`);
-  //   res.setEncoding('utf8');
-  //   res.on('data', (chunk) => {
-  //     console.log(`BODY: ${chunk}`);
-  //   });
-  //   res.on('end', () => {
-  //     console.log('No more data in response.');
-  //     let encodedName = encodeURI(url);
-  //     console.log('rawData is', rawData);
-  //     fs.writeFile(archive.paths.archivedSites + '/' + encodedName, rawData, (err) => {
-  //       if (err) { throw err; }
-  //     })
-  //     console.log('done downloading')
-  //   });
-  // })
-  //   .on('error', (e) => {
-  //     console.error(`Got error: ${e.message}`);
-  //   });
+// return http.request(options, (res) => {
+//   console.log(`STATUS: ${res.statusCode}`);
+//   console.log(`HEADERS: ${JSON.stringify(res.headers)}`);
+//   res.setEncoding('utf8');
+//   res.on('data', (chunk) => {
+//     console.log(`BODY: ${chunk}`);
+//   });
+//   res.on('end', () => {
+//     console.log('No more data in response.');
+//     let encodedName = encodeURI(url);
+//     console.log('rawData is', rawData);
+//     fs.writeFile(archive.paths.archivedSites + '/' + encodedName, rawData, (err) => {
+//       if (err) { throw err; }
+//     })
+//     console.log('done downloading')
+//   });
+// })
+//   .on('error', (e) => {
+//     console.error(`Got error: ${e.message}`);
+//   });

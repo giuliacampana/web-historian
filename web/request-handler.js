@@ -24,12 +24,11 @@ var actions = {
               //send user to loading page
               fs.readFile(archive.paths.loading, 'utf8', function (err, data) {
                 if (err) {
-                  console.log(err)
-                }
-                else {
+                  console.log(err);
+                } else {
                   utils.sendResponse(response, data, 200);
                 }
-              })
+              });
             } else {
               //send user to archived page
               utils.sendResponse(response, archivedSite);

@@ -53,9 +53,8 @@ exports.isUrlInList = function (url, callback) {
 
 exports.addUrlToList = function (url, callback) {
   fs.appendFile(exports.paths.list, url + '\n', (err) => {
-    if (err) { throw err; }
-    else if (callback) { callback(); }
-  })
+    if (err) { throw err; } else if (callback) { callback(); }
+  });
   // exports.readListOfUrls(function (urlArray) {
   //   urlArray.push(url);
   //   fs.writeFile(exports.paths.list, urlArray.join('\n'), (err) => {
@@ -67,18 +66,18 @@ exports.addUrlToList = function (url, callback) {
 };
 
 exports.isUrlArchived = function (url, callback) {
-  console.log('isUrlArchived called.')
+  console.log('isUrlArchived called.');
   //try to read it, if it doesnt work, err.
   let encodedName = encodeURI(url);
   fs.readFile(exports.paths.archivedSites + '/' + encodedName + '.html', 'utf8', (err, data) => {
-    if (err) { callback(data) }
+    if (err) { callback(data); }
     callback(data);
   });
 };
 
 exports.downloadUrls = function (urls) {
   for (let url of urls) {
-    console.log('url checking is:', url)
+    console.log('url checking is:', url);
     exports.isUrlArchived(url, function (archived) {
       if (!archived) {
         utils.getWebsiteHtml(url);
